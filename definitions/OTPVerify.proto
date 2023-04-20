@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.spin.grpc;
+option java_package = "com.spin.grpc";
+option java_outer_classname = "OTPVerifyProto";
+
+service OTPService {
+  rpc verifyOTP(OTPVerifyRequest) returns(StringUUID){}
+}
+
+message StringUUID {
+  string uuid = 1;
+}
+
+message OTPVerifyRequest {
+  string phone = 1;
+  string otpCode = 2;
+  string deviceId = 3;
+  string deliveryTarget = 4;
+}
